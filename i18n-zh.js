@@ -291,6 +291,12 @@
       "生成回答时：查到的专家中已在显存里的比例。GPU 经 PCIe 读取的专家（--pcie-frac）不计入其中；它们在全部路由专家中的占比显示在后面（+N% PCIe）",
     "routed experts the GPU read over PCIe (--pcie-frac) or another GPU computed":
       "GPU 经 PCIe 读取、或由另一块显卡计算的专家",
+    // === v0.1.42 新增：请求表把 Tok/s 拆成 Prefill / Decode 两列 ===
+    "Prefill t/s": "预填充 t/s",
+    "Decode t/s": "解码 t/s",
+    "Tok/s": "生成 tok/s",
+    "New prompt tokens per second, excluding reused cache tokens (engine prompt time)":
+      "新提示词每秒读取的 token 数，不含复用的缓存 token（按引擎的预填充耗时计算）",
     // === 收尾补漏 ===
     "Close": "关闭",
     "(being written)": "（正在写入）",
