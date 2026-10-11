@@ -55,7 +55,7 @@ install-zh.bat "D:\Strata"
 
 ## 升级 Strata 时（重要）
 
-官方的 `UPDATE.bat` 用 `git pull` 更新，**页面被改过会让它失败**。所以请按这个顺序：
+官方的 “UPDATE.bat” 用 “git pull” 更新，**页面被改过会让它失败**。所以请按这个顺序：
 
 1. **先卸载**：双击 `uninstall-zh.bat`
 2. **再更新**：运行官方的 `UPDATE.bat`（或 `START-HERE.bat --update`）
