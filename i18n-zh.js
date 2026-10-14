@@ -297,6 +297,17 @@
     "Tok/s": "生成 tok/s",
     "New prompt tokens per second, excluding reused cache tokens (engine prompt time)":
       "新提示词每秒读取的 token 数，不含复用的缓存 token（按引擎的预填充耗时计算）",
+    // === v0.1.44 新增：图片生成页（Images 标签页） ===
+    "Make an image": "生成图片",
+    "Size": "尺寸",
+    "Generate": "生成",
+    "random": "随机",
+    "Describe the image…": "描述你想要的画面…",
+    "One image at a time; a chat request waits for it (and the other way round).":
+      "一次只生成一张；生成期间聊天请求会等待（反之亦然）",
+    "Done. Right-click an image to save it.": "完成。右键点击图片即可保存。",
+    "Generating… (a minute or more on a small GPU)": "生成中…（显存小的显卡可能要一分钟以上）",
+    "No image": "暂无图片",
     // === 收尾补漏 ===
     "Close": "关闭",
     "(being written)": "（正在写入）",
