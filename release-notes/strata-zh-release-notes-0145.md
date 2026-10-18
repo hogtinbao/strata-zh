@@ -5,7 +5,9 @@
 > 1. 模型设置页 `sampling.temperature` 的说明句被改写成模型卡档位，新译文：「请求未指定时的默认温度（0 = 贪心；不设置则用模型卡的值：思考 1.0，不思考 0.7）」（旧句译文保留，兼容 0.1.44.1 及更早）
 > 2. 监控页新增一条只在 **Apple Silicon** 上出现的 GPU 读数说明（非 root 读不到温度与功耗、GPU 与 CPU 同芯片所以没有 PCIe 链路可显示），已收进词典
 >
-> 共新增 2 条译文，词典总量 695 行。
+> 另外还**补齐了 3 条自 0.1.40 起就存在、但此前漏收的界面文案**：工具调用块标签 `Arguments` →「参数」与 `Result` →「结果」、关于页链接 `Strata on GitHub` →「在 GitHub 上查看 Strata」，以及监控页底部提示「Last 100 requests kept in memory until restart. Inputs and outputs stay on this machine.」→「最近 100 条请求保存在内存里，重启即清空；输入与输出都只留在本机。」
+>
+> 共新增 5 条译文，词典总量 699 行。
 
 ## 安装
 

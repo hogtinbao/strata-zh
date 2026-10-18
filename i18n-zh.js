@@ -314,6 +314,12 @@
     // === 收尾补漏 ===
     "Close": "关闭",
     "(being written)": "（正在写入）",
+    // v0.1.45 复核补漏：这三条自 0.1.40 起就在页面上，之前漏收
+    "Arguments": "参数",
+    "Result": "结果",
+    "Strata on GitHub": "在 GitHub 上查看 Strata",
+    "Last 100 requests kept in memory until restart. Inputs and outputs stay on this machine.":
+      "最近 100 条请求保存在内存里，重启即清空；输入与输出都只留在本机。",
     "not readable (NVML)": "无法读取（NVML）",
     // v0.1.40.2 新增：GPU 读不到时的占位文案（只在 Windows AMD 上出现）
     "not available": "无法读取",
