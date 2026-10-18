@@ -260,6 +260,9 @@
     // 设置项说明（来自服务端 runconfig.py 的 EDITABLE 列表）
     "Default temperature for requests that send none (0 = greedy, the default without a sampling block)":
       "请求未指定时的默认温度（0 = 贪心，即无采样块时的默认值）",
+    // v0.1.45 起这句说明改写成模型卡的采样档位（上一条保留，兼容 0.1.44.1 及更早）
+    "Default temperature for requests that send none (0 = greedy; without it the model card's: 1.0 thinking, 0.7 not)":
+      "请求未指定时的默认温度（0 = 贪心；不设置则用模型卡的值：思考 1.0，不思考 0.7）",
     "Default top_p for requests that send none": "请求未指定时的默认 top_p",
     "Default top_k for requests that send none (1-64)": "请求未指定时的默认 top_k（1-64）",
     "Default min_p for requests that send none": "请求未指定时的默认 min_p",
@@ -315,6 +318,9 @@
     // v0.1.40.2 新增：GPU 读不到时的占位文案（只在 Windows AMD 上出现）
     "not available": "无法读取",
     "not available on Windows AMD yet": "Windows 上的 AMD 暂不支持",
+    // v0.1.45 新增：Apple Silicon 的 GPU 读数说明（只在 Mac 上出现）
+    "no GPU temperature or power reading without root (powermetrics), and an Apple Silicon GPU sits on the die, so there is no PCIe link to show; the engine's own figures are in its log":
+      "非 root 权限读不到 GPU 温度与功耗（需 powermetrics）；Apple Silicon 的 GPU 与 CPU 同处一颗芯片，因此没有 PCIe 链路可显示；引擎自身的数据见其日志",
     "no server is connected yet (see the Monitor)": "尚未连接任何服务器（见「监控」页）",
     "the engine reported an error": "引擎报告了错误",
     "pasted image": "粘贴的图片",
