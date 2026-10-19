@@ -334,6 +334,16 @@
       "其他应用（omp、API 客户端）会从下一次请求起使用这些设置。",
     "API response body.": "API 响应正文。",
     "Request content": "请求内容",
+    // === v0.2.0 更新：模型设置页 fit_max_tokens 改了文案，采样页与监视页几处新文案 ===
+    "Shorten a max_tokens that does not fit the context (on by default); off: answer 400 like llama.cpp":
+      "超出上下文窗口的 max_tokens 会被自动缩短（默认开启）；关闭后像 llama.cpp 一样直接返回 400 错误",
+    "Top-p": "Top-p（累积概率）",
+    "Top-k": "Top-k（候选数）",
+    "Saved to the run config; used from the next start of the model.":
+      "已保存到运行配置；下次启动模型时生效。",
+    "not set": "未设置",
+    "Monitor capture truncated at 256K characters; the API response was not shortened.":
+      "监视记录超过 25.6 万字符已截断保存；API 返回的内容本身未截断。",
   };
 
   // 只作用于下拉选项 <option> 的表，避免 start/end/model 这类通用词污染其它文本节点。
@@ -434,6 +444,24 @@
       (m) => `${m[1]} tokens${m[2] ? ` · ${m[3]} tok/s` : ""}${m[4] ? " · 已停止" : ""}` +
              `${m[5] ? ` · 投影${m[6] === "on" ? "开" : "关"}` : ""}` +
              `${m[7] ? ` · 已达工具调用轮数上限 ${m[8]} 轮（mcp.max_rounds）` : ""}`],
+    // --- v0.2.0 新增：模型设置页保存失败时服务器返回的英文校验提示（serve/runconfig.py）---
+    [/^lazy_load: lazy loading is text-only, and this model reads images \("vision"\)$/,
+      () => "延迟加载（lazy_load）只支持纯文本模型，而当前模型能读图片（vision），无法开启"],
+    [/^([\w.]+): expected a (whole )?number, (at least|more than) ([\d.]+)( and at most ([\d.]+))?, not (.+)$/,
+      (m) => `${m[1]}：需要一个${m[2] ? "整数" : "数字"}，${m[3] === "more than" ? "大于" : "至少"} ${m[4]}` +
+             `${m[6] ? `、最多 ${m[6]}` : ""}，当前是 ${m[7]}`],
+    [/^([\w.]+): expected true or false, not (.+)$/,
+      (m) => `${m[1]}：只能是 true 或 false，当前是 ${m[2]}`],
+    [/^([\w.]+): expected one of (.+), not (.+)$/,
+      (m) => `${m[1]}：可选值为 ${m[2]}，当前是 ${m[3]}`],
+    [/^([\w.]+): expected a list of model names, not (.+)$/,
+      (m) => `${m[1]}：需要一串模型名（逗号分隔），当前是 ${m[2]}`],
+    [/^'([\w.]+)' cannot be changed here \(only the keys the Settings view lists\)$/,
+      (m) => `“${m[1]}”不能在这里修改（只能改设置页列出的键）`],
+    [/^(.+\.json) is not a JSON object$/,
+      (m) => `${m[1]} 不是有效的 JSON 对象`],
+    [/^send \{"set": \{.+\}\}$/,
+      () => '请求应为：{"set": {"<键>": <值或 null>, ...}}'],
   ];
 
   // ---- DOM 处理 ------------------------------------------------------------
