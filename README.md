@@ -93,7 +93,7 @@ uninstall-zh.bat                                :: 卸载并还原英文界面
 
 ## 上游 PR
 
-这套汉化已经提给官方：[Niko1221/Strata#1836](https://github.com/Niko1221/Strata/pull/1836)（已关闭：官方倾向由第三方语言包形式维护）。本包继续跟着官方版本更新，0.2.0-beta 已适配。
+这套汉化已经提给官方：[Niko1221/Strata#1836](https://github.com/Niko1221/Strata/pull/1836)。它是在官方 0.2.0-beta 的 **追踪器重置** 中被统一关闭的，**不是拒绝** —— 维护者说明：超过 1300 个未处理 issue/PR，暂时关闭所有没人正在推进的条目，并给出 4 步重新打开的办法（rebase 到 main、标题加 `[GUI]`/`[Other]` 前缀、填 PR 模板里的问题/结果/验证、评论 `/reopen`）。本包会继续跟官方版本更新，0.2.0-beta 已适配。
 
 ---
 

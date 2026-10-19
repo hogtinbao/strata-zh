@@ -68,7 +68,7 @@ install-zh.bat "D:\Strata"
 
 本包为**非官方**作品，与 Strata 项目无隶属或背书关系。
 
-上游 PR：[Niko1221/Strata#1836](https://github.com/Niko1221/Strata/pull/1836)（已关闭；本包继续以独立语言包形式跟随官方版本更新）
+上游 PR：[Niko1221/Strata#1836](https://github.com/Niko1221/Strata/pull/1836)。它是在官方 **0.2.0-beta 追踪器重置** 中被统一关闭的，不是拒绝 —— 维护者给了 4 步 `/reopen` 流程（rebase 到 main、标题加 `[GUI]`/`[Other]` 前缀、填 PR 模板的问题/结果/验证、评论 `/reopen`）。语言包会继续跟随官方版本更新。
 
 ---
 
