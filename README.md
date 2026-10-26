@@ -12,7 +12,7 @@
 
 - **三档语言**：`English`（原版界面）/ `简体中文` / `中英文`（中文在上、英文小字在下）
 - **模型输出永不翻译** —— 聊天正文、思考过程、代码块、工具调用参数与结果，**原样保留**。切到中文只是把界面变中文，模型写什么就显示什么。
-- **覆盖完整**：0.2.0-beta 界面里所有用户可见文案，含
+- **覆盖完整**：0.2.6 界面里所有用户可见文案，含
   - 聊天、监控、关于三个页面与状态栏
   - **图片生成页**（0.1.44 新增）：标题、提示词输入框、尺寸/种子、生成按钮、提示语与结果区文案（该标签页仅在服务端声明支持图片生成时显示，译文已就位）
   - 采样抽屉（思考档位、temperature、top_p…）
@@ -22,7 +22,9 @@
 
 ## 兼容版本
 
-**Strata v0.2.0-beta**（0.1.40.x 起均可）。官方 0.2.0-beta 的 `serve/web/` 与 0.1.45 完全一致，页面结构与文案零变动；变的是模型设置页的说明句来源 `serve/runconfig.py`，其中 `fit_max_tokens` 一条被改写，译文已同步（旧句译文保留，装 0.1.45 及更早版本照旧生效）。这一版还把**模型设置页保存失败的中文报错**补上了：这些提示是服务端原文，以前只显示英文（`lazy_load: lazy loading is text-only…`、`sampling.top_k: expected a whole number…` 等 8 类），现在都有中文。历史沿革：0.1.42 把请求表拆成 `Prefill t/s` 与 `Decode t/s` 两列，0.1.44 新增图片生成页，0.1.45 没有新增界面文案只改了采样默认值逻辑 —— 以上本包均已覆盖。
+**Strata v0.2.6**（0.1.40.x 起均可）。官方从 0.2.0-beta 到 0.2.6 的 `serve/web/` 只在 0.2.6 增了两条 API 密钥提示（`app.js`，#3435），其余四个提交只动 CSS 与 DOM 结构，页面文案零变动；变的是**服务端返回的原文**——`serve/runconfig.py` 新增了 `mtp`（草稿层）这个配置键，`serve/frontend.py` 新增了三条会被聊天页原样显示的拒绝提示（思考档位越界、空消息列表、工具名含空格）。本版把这 5 条都接住了，另外补回一条旧版漏掉的 `0 · greedy`（温度为 0 时的读数）。
+
+历史沿革：0.1.42 把请求表拆成 `Prefill t/s` 与 `Decode t/s` 两列，0.1.44 新增图片生成页，0.1.45 改了采样默认温度的说明句，0.2.0-beta 改了 `fit_max_tokens` 的说明句并加入模型设置页的保存失败报错（8 类）—— 以上本包均已覆盖。
 
 ## 安装
 
@@ -93,7 +95,7 @@ uninstall-zh.bat                                :: 卸载并还原英文界面
 
 ## 上游 PR
 
-这套汉化已经提给官方：[Niko1221/Strata#1836](https://github.com/Niko1221/Strata/pull/1836)。它是在官方 0.2.0-beta 的 **追踪器重置** 中被统一关闭的，**不是拒绝** —— 维护者说明：超过 1300 个未处理 issue/PR，暂时关闭所有没人正在推进的条目，并给出 4 步重新打开的办法（rebase 到 main、标题加 `[GUI]`/`[Other]` 前缀、填 PR 模板里的问题/结果/验证、评论 `/reopen`）。本包会继续跟官方版本更新，0.2.0-beta 已适配。
+这套汉化已经提给官方：[Niko1221/Strata#3293](https://github.com/Niko1221/Strata/pull/3293)。前一个 PR [#1836](https://github.com/Niko1221/Strata/pull/1836) 是在官方 0.2.0-beta 的 **追踪器重置** 中被统一关闭的，**不是拒绝** —— 维护者说明：超过 1300 个未处理 issue/PR，暂时关闭所有没人正在推进的条目，并给出 4 步重新打开的办法（rebase 到 main、标题加 `[GUI]`/`[Other]` 前缀、填 PR 模板里的问题/结果/验证、评论 `/reopen`）。#1836 因分支被 force-push 过而无法 `/reopen`，同一改动另开为 #3293，现已跟到官方 0.2.6。本包会继续跟官方版本更新。
 
 ---
 
@@ -101,4 +103,4 @@ uninstall-zh.bat                                :: 卸载并还原英文界面
 
 An **unofficial Chinese localisation pack** for the [Strata](https://github.com/Niko1221/Strata) web interface (MIT). Adds a `Language` button with **English / Simplified Chinese / Chinese + English**. The model's own output — chat text, reasoning, code, tool calls — is never rewritten. Install with `install-zh.bat` (or copy `i18n-zh.js` into `serve/web/` and add one `<script>` tag to each of the two HTML pages). Uninstall before running the official `UPDATE.bat`, then install again.
 
-Contains no Strata source, no engine binaries and **no model weights**. Upstream PR: [#1836](https://github.com/Niko1221/Strata/pull/1836).
+Contains no Strata source, no engine binaries and **no model weights**. Upstream PR: [#3293](https://github.com/Niko1221/Strata/pull/3293) (supersedes #1836, closed by the upstream tracker reset).

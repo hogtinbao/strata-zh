@@ -107,6 +107,7 @@
     "Sampling saved": "采样设置已保存",
     "Saved here, but not for other apps": "只在本页生效，未应用到其他应用",
     "Greedy: the same question gives the same answer.": "贪心模式：同样的问题会得到同样的答案。",
+    "0 · greedy": "0 · 贪心",
     "Reset": "重置",
     "Apply": "应用",
 
@@ -162,6 +163,8 @@
     "Chats, settings and the key are kept in this browser only.": "对话、设置和密钥只保存在这个浏览器中。",
     "Kept in this browser only.": "只保存在这个浏览器中。",
     "API key saved": "API 密钥已保存",
+    "API key used for this page only": "API 密钥仅在本页生效",
+    "Browser storage is unavailable. Enter it again after reloading.": "浏览器存储不可用，重新加载页面后需要重新输入。",
     "API key needed": "需要 API 密钥",
     "This server needs a key: add it under About > Settings.": "该服务器需要密钥：请在「关于 › 设置」中填写。",
     "This server needs an API key: add it under About > Settings.": "该服务器需要 API 密钥：请在「关于 › 设置」中填写。",
@@ -278,6 +281,9 @@
       "服务器列出并响应的其他模型名（逗号分隔）",
     "Unload the model after this many seconds without requests (0 or empty: never)":
       "空闲这么多秒后卸载模型（0 或留空 = 从不卸载）",
+    // v0.2.6 新增的模型设置键
+    "Draft layer (MTP): off starts the engine without it (about 1 GB less graphics memory, slower words per second); empty or on: as installed":
+      "草稿层（MTP）：关闭后启动引擎时不加载它（省约 1 GB 显存，但每秒出词更慢）；留空或开启 = 按安装时的设置",
     "Start without loading the model; the first request loads it (text only)":
       "启动时不加载模型，收到第一个请求才加载（仅文字模式）",
     "End a request when the engine says nothing for this long (default 300 s, 0 = wait)":
@@ -368,6 +374,7 @@
     "effort_position": "思考档位位置",
     "aliases": "额外模型名",
     "idle_unload_s": "空闲卸载秒数",
+    "mtp": "草稿层（MTP）",
     "lazy_load": "延迟加载",
     "engine_silence_s": "引擎静默超时",
     "api_monitor": "API 监控",
@@ -462,6 +469,15 @@
       (m) => `${m[1]} 不是有效的 JSON 对象`],
     [/^send \{"set": \{.+\}\}$/,
       () => '请求应为：{"set": {"<键>": <值或 null>, ...}}'],
+    // --- v0.2.6 新增：聊天请求被服务器拒绝时，页面会把这条英文原样显示出来（serve/frontend.py）---
+    [/^unknown reasoning effort (.+): use none, low, medium, high, max or 1\.\.100$/,
+      (m) => `思考档位 ${m[1]} 无法识别：可用 none / low / medium / high / max，或 1～100 的整数`],
+    [/^unknown reasoning effort (.+): use none, low, medium or high$/,
+      (m) => `思考档位 ${m[1]} 无法识别：可用 none / low / medium / high`],
+    [/^messages must be a non-empty list: send at least one message$/,
+      () => "消息列表不能为空：至少要发一条消息"],
+    [/^whitespace tool name is not declared$/,
+      () => "工具名里含空格，且请求中没有声明这个工具"],
   ];
 
   // ---- DOM 处理 ------------------------------------------------------------
